@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:phone_connect/main.dart';
-import 'package:phone_connect/setting.dart';
+
+import 'main.dart';
+import 'pages/setting.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({Key? key}) : super(key: key);

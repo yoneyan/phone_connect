@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'drawer.dart';
+import '../drawer.dart';
 
 class SettingPage extends StatefulWidget {
   static const String roxuteName = '/setting';
+
+  const SettingPage({Key? key}) : super(key: key);
 
   @override
   State<SettingPage> createState() => _SettingPage();
