@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:phone_connect/pages/bluetooth.dart';
 
-import 'main.dart';
 import 'pages/setting.dart';
 
 class AppDrawer extends StatefulWidget {
@@ -42,7 +42,7 @@ class AppDrawerState extends State<AppDrawer> {
               Navigator.push(
                 context,
                 PageRouteBuilder(
-                  pageBuilder: (_, __, ___) => MainPage(),
+                  pageBuilder: (_, __, ___) => const BluetoothPage(),
                   transitionDuration: const Duration(milliseconds: 500),
                 ),
               );
@@ -55,7 +55,7 @@ class AppDrawerState extends State<AppDrawer> {
               Navigator.push(
                 context,
                 PageRouteBuilder(
-                  pageBuilder: (_, __, ___) => SettingPage(),
+                  pageBuilder: (_, __, ___) => const SettingPage(),
                   transitionDuration: const Duration(milliseconds: 500),
                 ),
               );
