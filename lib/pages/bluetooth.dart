@@ -5,7 +5,7 @@ import 'package:phone_connect/pages/detail.dart';
 import '../drawer.dart';
 
 class BluetoothPage extends StatefulWidget {
-  static const String roxuteName = '/setting';
+  static const String routeName = '/setting';
 
   const BluetoothPage({Key? key}) : super(key: key);
 
@@ -18,7 +18,7 @@ class _BluetoothPage extends State<BluetoothPage> {
   void initState() {
     super.initState();
     // Start scanning
-    FlutterBlue.instance.startScan(timeout: Duration(seconds: 4));
+    FlutterBlue.instance.startScan(timeout: const Duration(seconds: 4));
 
 // Stop scanning
 //     FlutterBlue.instance.stopScan();
