@@ -21,46 +21,14 @@ class _GetBatteryPage extends State<GetBatteryPage> {
     _status = 'Connected';
     List<BluetoothService> services =
         await widget.bluetoothDevice.discoverServices();
-
-    services.forEach((service) async {
-      print(service.uuid);
-      // print(service.characteristics);
+    for (var service in services) {
       if (service.uuid.toString() == "0000180f-0000-1000-8000-00805f9b34fb") {
-        print("Battery");
-        _status = 'OK';
-        List<int> value = await service.characteristics[0].read();
-        _battery = value[0];
-        print(value[0]);
-        return Future.value(_battery);
-
-    // await Future.forEach(services, (service) async {
-    //   if (service.uuid.toString() == "0000180f-0000-1000-8000-00805f9b34fb") {
-    //     print("Battery");
-    //     _status = 'OK';
-    //     List<int> value = await service.characteristics[0].read();
-    //     _battery = value[0];
-    //     print(value[0]);
-    //     return Future.value(_battery);
-    //   }
-    // });
+        List<int> data = await service.characteristics[0].read();
+        _battery = data[0];
+      }
+    }
+    return _battery;
   }
-
-  // services.forEach((service) async {
-  //   print(service.uuid);
-  //   // print(service.characteristics);
-  //   if (service.uuid.toString() == "0000180f-0000-1000-8000-00805f9b34fb") {
-  //     print("Battery");
-  //     _status = 'OK';
-  //     List<int> value = await service.characteristics[0].read();
-  //     _battery = value[0];
-  //     print(value[0]);
-  //     return Future.value(_battery);
-  // return Future.value(value[0]);
-  // for (BluetoothCharacteristic c in service.characteristics) {
-  //   List<int> value = await c.read();
-  //   print(value);
-  //   return value[0]
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +56,7 @@ class _GetBatteryPage extends State<GetBatteryPage> {
                   return Text(snapshot.data.toString() + "%");
                 }
               } else {
-                return const Text("エラーが発生しました");
+                return const Text("データの取得中です");
               }
             },
           ),
