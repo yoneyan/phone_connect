@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_blue/flutter_blue.dart';
+import 'package:convert/convert.dart';
+import 'package:phone_connect/pages/service/tethering_on.dart';
 
 import '../drawer.dart';
 import 'service/get_battery.dart';
@@ -80,7 +84,17 @@ class _BleDetailPage extends State<BleDetailPage> {
               primary: Colors.blue,
               onPrimary: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (_, __, ___) => TetheringOnPage(
+                    bluetoothDevice: widget.scanResult.device,
+                  ),
+                  transitionDuration: const Duration(milliseconds: 500),
+                ),
+              );
+            },
           ),
           ElevatedButton(
             child: const Text('テザリング　オフ'),
@@ -96,7 +110,19 @@ class _BleDetailPage extends State<BleDetailPage> {
               primary: Colors.orange,
               onPrimary: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              print('start');
+              const text = "test";
+              List<int> bytes = text.codeUnits;
+              print(bytes);
+              // print(hex.decode('test'));
+              // for (int i = 0; i <= text.length - 8; i += 8) {
+              //   final hex = text.substring(i, i + 8);
+              //
+              //   final number = int.parse(hex, radix: 16);
+              //   print(number);
+              // }
+            },
           ),
           ElevatedButton(
             child: const Text('Test2'),

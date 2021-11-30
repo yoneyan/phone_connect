@@ -22,6 +22,7 @@ class _GetBatteryPage extends State<GetBatteryPage> {
     List<BluetoothService> services =
         await widget.bluetoothDevice.discoverServices();
     for (var service in services) {
+      print(service);
       if (service.uuid.toString() == "0000180f-0000-1000-8000-00805f9b34fb") {
         List<int> data = await service.characteristics[0].read();
         _battery = data[0];
@@ -48,7 +49,7 @@ class _GetBatteryPage extends State<GetBatteryPage> {
           FutureBuilder(
             future: _getBattery(),
             builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-              print(snapshot.data);
+              // print(snapshot.data);
               if (snapshot.hasData) {
                 if (snapshot.data == -1) {
                   return const Text("データが取得できません");
