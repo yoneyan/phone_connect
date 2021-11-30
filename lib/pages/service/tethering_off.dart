@@ -5,18 +5,18 @@ import 'package:flutter_blue/flutter_blue.dart';
 import 'package:phone_connect/pages/etc/etc.dart';
 import 'package:crypto/crypto.dart';
 
-class TetheringOnPage extends StatefulWidget {
+class TetheringOffPage extends StatefulWidget {
   final BluetoothDevice bluetoothDevice;
   static const String roxuteName = '/detail';
 
-  const TetheringOnPage({Key? key, required this.bluetoothDevice})
+  const TetheringOffPage({Key? key, required this.bluetoothDevice})
       : super(key: key);
 
   @override
-  State<TetheringOnPage> createState() => _TetheringOnPage();
+  State<TetheringOffPage> createState() => _TetheringOffPage();
 }
 
-class _TetheringOnPage extends State<TetheringOnPage> {
+class _TetheringOffPage extends State<TetheringOffPage> {
   String _status = 'Connecting.....';
   String iv = "iv_key";
   String preSharedKey = "share_key";
@@ -113,7 +113,7 @@ class _TetheringOnPage extends State<TetheringOnPage> {
             "," +
             accessToken +
             "," +
-            "tethering_on";
+            "tethering_off";
         print("Plain Text: " + plainText);
         var encrypted = encryptText(iv, preSharedKey, plainText);
         print("Encrypted Text: " + encrypted);

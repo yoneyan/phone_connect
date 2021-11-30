@@ -8,6 +8,7 @@ import 'package:phone_connect/pages/service/tethering_on.dart';
 
 import '../drawer.dart';
 import 'service/get_battery.dart';
+import 'service/tethering_off.dart';
 
 class BleDetailPage extends StatefulWidget {
   final ScanResult scanResult;
@@ -102,7 +103,17 @@ class _BleDetailPage extends State<BleDetailPage> {
               primary: Colors.red,
               onPrimary: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (_, __, ___) => TetheringOffPage(
+                    bluetoothDevice: widget.scanResult.device,
+                  ),
+                  transitionDuration: const Duration(milliseconds: 500),
+                ),
+              );
+            },
           ),
           ElevatedButton(
             child: const Text('Test1'),
